@@ -1,0 +1,177 @@
+TASK 2
+
+
+Sample phishing email
+
+Subject: Urgent: Your Account Will Be Suspended in 24 Hours
+From: support@secure-paypal.com
+To: user@example.com
+
+
+1)
+Spoofing tactic: Attackers register a lookalike domain to trick users visually.
+
+Legit PayPal domain: paypal.com
+Phishing domain used: secure-paypal.com
+--> This is not owned by PayPal.
+--> It tries to mimic legitimacy using words like “secure” and “PayPal.”
+
+2)
+Check Email Headers (Technical Check)
+In a real email client, view email headers and examine:
+
+Return-Path:
+--> Does it match the From address?
+--> Often, spoofers use different return addresses.
+
+Received:
+--> Shows the real mail servers that sent the email.
+--> Look for suspicious, unknown IPs or hostnames.
+
+SPF, DKIM, and DMARC results:
+--> These are email authentication mechanisms.
+--> A spoofed sender will often fail one or more of them.
+
+3)
+Spoofers might use Unicode characters to trick the eye.
+
+4)
+Research on the domain of the address.
+--> Newly created- likely a phishing email.
+--> check if it is linked to any phishing reports.
+
+To conclude:
+The sample email address support@secure-paypal.com is likely spoofed or malicious, because:
+
+-->It mimics a legitimate domain.
+-->It uses urgency and fear.
+-->It links to a non-official domain.
+-->It may fail SPF/DKIM/DMARC checks.
+
+
+
+
+
+Analyzed email header:
+
+SAMPLE:
+Delivered-To: user@example.com
+Received: by 2002:a1f:8204:0:0:0:0:0 with SMTP id k4csp7893838vka;
+        Mon, 24 Jun 2024 07:22:15 -0700 (PDT)
+X-Received: by 2002:a05:6e02:179:b0:362:4c9d:2c91 with SMTP id c25-20020a056e02179000b003624c9d2c91mr92485866qkb.9.1719238935123;
+        Mon, 24 Jun 2024 07:22:15 -0700 (PDT)
+Return-Path: <notify@secure-paypal.com>
+Received: from mail.paypal-alert.com (host-45-78-123-19.secure-paypal.com. [45.78.123.19])
+        by mx.google.com with ESMTPS id i14si2459134qka.181.2024.06.24.07.22.14
+        for <user@example.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 24 Jun 2024 07:22:15 -0700 (PDT)
+Received-SPF: fail (google.com: domain of secure-paypal.com does not designate 45.78.123.19 as permitted sender) client-ip=45.78.123.19;
+Authentication-Results: mx.google.com;
+       spf=fail (google.com: domain of secure-paypal.com does not designate 45.78.123.19 as permitted sender) smtp.mailfrom=notify@secure-paypal.com;
+       dkim=none (message not signed);
+       dmarc=fail (p=REJECT sp=REJECT dis=NONE) header.from=secure-paypal.com
+From: PayPal Support <notify@secure-paypal.com>
+To: user@example.com
+Subject: Important: Your Account Has Been Restricted
+Date: Mon, 24 Jun 2024 14:22:10 +0000
+Message-ID: <04111.20062024.aa01@secure-paypal.com>
+Content-Type: text/html
+MIME-Version: 1.0
+
+RESULT AFTER ANALYZING:
+Problem Icon DMARC Compliant (No DMARC Record Found)
+Problem Icon SPF Alignment.
+Problem Icon SPF Authenticated.
+Problem Icon DKIM Alignment.
+Problem Icon DKIM Authenticated.
+
+
+
+
+Sample Email Body (Phishing Example)
+Subject: Urgent: Your Account Will Be Suspended
+Dear Customer,
+We have detected suspicious activity in your PayPal account. Please verify your account to avoid suspension.
+👉 Verify My Account
+Or download the attached form and complete verification:
+📎 PayPal_Verification_Form.pdf.exe
+Thank you,
+— PayPal Security Team
+
+Link:
+http://paypal.com.secure-update-info.com/login
+it is suspicious because it contains the word "paypal.com" to trick users, but the actual domain is: secure-update-info.com
+This is called a deceptive subdomain attack.
+Real PayPal URLs only come from domains like paypal.com or paypalobjects.com.
+
+Suspicious Attachment:
+File: PayPal_Verification_Form.pdf.exe
+Why it’s suspicious:
+It appears to be a PDF file but ends in .exe — an executable program.
+This is a common phishing tactic: double extensions to fool users.
+If opened, this file could install malware (e.g., keyloggers, ransomware).
+
+
+
+
+
+Look for urgent or threatening languages and statments
+
+
+
+
+
+
+IDENTIFY MISMATCHED URLs:
+EXAMPLE:
+
+Link Displayed in Email:
+Verify My Account
+
+Actual Hyperlink Destination (on hover or in source code):
+http://paypal.com.secure-update-info.com/login
+
+
+
+
+VERIFY SPELLING AND GRAMMATICAL ERRORS:
+EXAMPLE:
+
+Dear Customer,
+
+We have detected suspicious activity on your PayPal account. To protect your account from unauthorized access, we have temporarily limited your account access.
+Please verify your identity by clicking the link below:
+👉 Verify My Account
+If you do not verify your account within 24 hours, it will be permanently suspended.
+Thank you for your attention to this matter.
+PayPal Security Team
+
+| Issue    | Original                                                  | Corrected                                                 |
+| -------- | --------------------------------------------------------- | --------------------------------------------------------- |
+| Spelling | "detected suspicious activity **in** your PayPal account" | "activity **on** your PayPal account"                     |
+| Grammar  | "access your account has been suspended"                  | "we have temporarily limited your account access"         |
+| Clarity  | "Failure to verify..."                                    | "If you do not verify..." (improved readability and tone) |
+
+Found spelling and grammatical errors in the email.
+
+
+
+
+
+
+
+TO SUMMARZE:
+| Trait                                               | Description                                              | Example                                                                   |
+| --------------------------------------------------- | -------------------------------------------------------- | ------------------------------------------------------------------------- |
+| **1. Fake Sender Address**                          | Uses a domain that mimics a real company                 | `support@secure-paypal.com` (not from `paypal.com`)                       |
+| **2. Urgent or Threatening Language**               | Creates panic to force quick action                      | “Your account will be suspended in 24 hours”                              |
+| **3. Suspicious/Mismatched Links**                  | Visible link looks legitimate, actual URL is malicious   | Text: `www.paypal.com` → Real URL: `paypal.com.secure-update-info.com`    |
+| **4. Generic Greeting**                             | No personalization; avoids using your real name          | “Dear Customer” instead of your full name                                 |
+| **5. Fake Attachments or Double Extensions**        | Attachment pretends to be safe but is actually dangerous | `PayPal_Verification_Form.pdf.exe`                                        |
+| **6. Spelling/Grammar Issues** *(in some versions)* | May include awkward phrasing or minor errors             | e.g., “access your account has been suspended” (fixed in revised version) |
+| **7. No Contact Verification**                      | No way to verify via official site or support            | Doesn’t include verifiable contact info or links to `paypal.com`          |
+
+
+
+These are the clear phishing traits in the given sample phishing email. 
